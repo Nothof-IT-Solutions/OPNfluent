@@ -1,0 +1,409 @@
+/*
+ * OPNfluent 1.0.0
+ * Fluent-inspired Mica surface layer for OPNsense.
+ * Loaded before the compatibility stylesheet so targeted !important rules are
+ * used intentionally where the legacy Bootstrap skin has higher specificity.
+ */
+
+:root {
+  color-scheme: light;
+  --of-accent: #0067c0;
+  --of-accent-hover: #005a9e;
+  --of-accent-soft: rgba(0, 103, 192, 0.12);
+  --of-accent-border: rgba(0, 103, 192, 0.32);
+  --of-bg: #e9f0f7;
+  --of-bg-glow: rgba(94, 168, 255, 0.30);
+  --of-mica: rgba(248, 251, 255, 0.82);
+  --of-mica-solid: #f4f7fb;
+  --of-layer: rgba(255, 255, 255, 0.76);
+  --of-layer-hover: rgba(255, 255, 255, 0.94);
+  --of-flyout: rgba(250, 252, 255, 0.94);
+  --of-text: #18202a;
+  --of-muted: #5d6672;
+  --of-border: rgba(25, 35, 48, 0.13);
+  --of-border-strong: rgba(25, 35, 48, 0.21);
+  --of-shadow: 0 8px 30px rgba(20, 35, 55, 0.10);
+  --of-shadow-raised: 0 12px 38px rgba(20, 35, 55, 0.16);
+  --of-success: #0f7b0f;
+  --of-warning: #9d5d00;
+  --of-danger: #c42b1c;
+  --of-radius: 10px;
+  --of-radius-sm: 6px;
+  --of-blur: blur(22px) saturate(135%);
+  --of-font: "Segoe UI Variable Text", "Segoe UI", SourceSansProRegular, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --of-accent: #60a5fa;
+    --of-accent-hover: #7db5fb;
+    --of-accent-soft: rgba(96, 165, 250, 0.16);
+    --of-accent-border: rgba(96, 165, 250, 0.38);
+    --of-bg: #111820;
+    --of-bg-glow: rgba(0, 91, 161, 0.30);
+    --of-mica: rgba(28, 36, 46, 0.84);
+    --of-mica-solid: #1c242e;
+    --of-layer: rgba(42, 51, 63, 0.76);
+    --of-layer-hover: rgba(53, 63, 76, 0.94);
+    --of-flyout: rgba(35, 44, 55, 0.95);
+    --of-text: #f3f6fa;
+    --of-muted: #b6c0cd;
+    --of-border: rgba(255, 255, 255, 0.10);
+    --of-border-strong: rgba(255, 255, 255, 0.18);
+    --of-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+    --of-shadow-raised: 0 14px 42px rgba(0, 0, 0, 0.38);
+    --of-success: #6ccb5f;
+    --of-warning: #f7c663;
+    --of-danger: #ff8b83;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+  color: var(--of-text) !important;
+  font-family: var(--of-font) !important;
+}
+
+body {
+  background-color: var(--of-bg) !important;
+  background-image:
+    radial-gradient(circle at 9% 0%, var(--of-bg-glow), transparent 34rem),
+    radial-gradient(circle at 92% 18%, rgba(130, 93, 255, 0.12), transparent 30rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 50%) !important;
+  background-attachment: fixed !important;
+}
+
+body,
+.page-content-main,
+#content,
+.content-wrapper {
+  background-color: transparent !important;
+}
+
+a { color: var(--of-accent) !important; }
+a:hover,
+a:focus { color: var(--of-accent-hover) !important; }
+
+/* App chrome */
+.navbar,
+.navbar-default,
+.navbar-inverse,
+#header,
+header.navbar {
+  background: var(--of-mica) !important;
+  border-color: var(--of-border) !important;
+  box-shadow: 0 1px 0 var(--of-border), var(--of-shadow) !important;
+  -webkit-backdrop-filter: var(--of-blur);
+  backdrop-filter: var(--of-blur);
+}
+
+.navbar a,
+.navbar .glyphicon,
+.navbar-default .navbar-nav > li > a,
+.navbar-inverse .navbar-nav > li > a {
+  color: var(--of-text) !important;
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus,
+.navbar-nav > .open > a,
+.navbar-nav > .active > a {
+  background: var(--of-accent-soft) !important;
+  color: var(--of-accent) !important;
+}
+
+#sidebar,
+.sidebar,
+.page-sidebar,
+.sidebar-wrapper {
+  background: var(--of-mica) !important;
+  border-color: var(--of-border) !important;
+  -webkit-backdrop-filter: var(--of-blur);
+  backdrop-filter: var(--of-blur);
+}
+
+#sidebar a,
+.sidebar a,
+.page-sidebar a,
+.sidebar-wrapper a { color: var(--of-text) !important; }
+
+#sidebar li.active > a,
+.sidebar li.active > a,
+.page-sidebar li.active > a,
+.sidebar-wrapper li.active > a {
+  position: relative;
+  background: var(--of-accent-soft) !important;
+  color: var(--of-accent) !important;
+}
+
+#sidebar li.active > a::before,
+.sidebar li.active > a::before,
+.page-sidebar li.active > a::before {
+  position: absolute;
+  inset: 7px auto 7px 3px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--of-accent);
+  content: "";
+}
+
+/* Mica cards, panels and widgets */
+.panel,
+.card,
+.well,
+.jumbotron,
+.modal-content,
+.widgetdiv,
+.content-box,
+.list-group,
+.tab-content {
+  color: var(--of-text) !important;
+  background: var(--of-layer) !important;
+  border: 1px solid var(--of-border) !important;
+  border-radius: var(--of-radius) !important;
+  box-shadow: var(--of-shadow) !important;
+  -webkit-backdrop-filter: var(--of-blur);
+  backdrop-filter: var(--of-blur);
+}
+
+.panel-heading,
+.panel-title,
+.modal-header,
+.modal-footer,
+.widgetdiv .content-box-head,
+.content-box-head {
+  color: var(--of-text) !important;
+  background: transparent !important;
+  border-color: var(--of-border) !important;
+}
+
+.panel-heading,
+.widgetdiv .content-box-head,
+.content-box-head {
+  min-height: 42px !important;
+  padding: 10px 14px !important;
+  border-radius: var(--of-radius) var(--of-radius) 0 0 !important;
+}
+
+.panel-body,
+.well,
+.modal-body { color: var(--of-text) !important; }
+
+.dropdown-menu,
+.popover,
+.tooltip-inner,
+.typeahead,
+.bootstrap-select .dropdown-menu {
+  color: var(--of-text) !important;
+  background: var(--of-flyout) !important;
+  border: 1px solid var(--of-border-strong) !important;
+  border-radius: var(--of-radius) !important;
+  box-shadow: var(--of-shadow-raised) !important;
+  -webkit-backdrop-filter: var(--of-blur);
+  backdrop-filter: var(--of-blur);
+}
+
+.dropdown-menu > li > a { color: var(--of-text) !important; }
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: var(--of-text) !important;
+  background: var(--of-accent-soft) !important;
+}
+
+/* Commands and form controls */
+.btn,
+button,
+input,
+select,
+textarea,
+.form-control,
+.input-group-addon,
+.bootstrap-select > .dropdown-toggle {
+  border-radius: var(--of-radius-sm) !important;
+}
+
+.btn,
+.btn-default,
+button,
+.input-group-addon {
+  color: var(--of-text) !important;
+  background: var(--of-layer) !important;
+  border-color: var(--of-border-strong) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+}
+
+.btn:hover,
+.btn-default:hover,
+button:hover {
+  background: var(--of-layer-hover) !important;
+  border-color: var(--of-border-strong) !important;
+}
+
+.btn-primary,
+.btn-info,
+.btn-success,
+button[type="submit"],
+input[type="submit"] {
+  color: #fff !important;
+  background: var(--of-accent) !important;
+  border-color: transparent !important;
+}
+
+.btn-danger { color: #fff !important; background: #c42b1c !important; border-color: transparent !important; }
+.btn-warning { color: #1b1b1b !important; background: #f7c663 !important; border-color: transparent !important; }
+
+.form-control,
+input,
+select,
+textarea {
+  color: var(--of-text) !important;
+  background: var(--of-layer) !important;
+  border: 1px solid var(--of-border-strong) !important;
+  box-shadow: inset 0 -1px 0 var(--of-border-strong) !important;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus,
+.btn:focus,
+a:focus-visible {
+  border-color: var(--of-accent) !important;
+  outline: 2px solid var(--of-accent-border) !important;
+  outline-offset: 1px;
+  box-shadow: 0 0 0 3px var(--of-accent-soft) !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] { accent-color: var(--of-accent); }
+
+/* Data-heavy administration views */
+table,
+.table,
+.bootgrid-table,
+.tabulator,
+.tabulator-tableholder,
+.tabulator-table {
+  color: var(--of-text) !important;
+  background: transparent !important;
+}
+
+.table > thead > tr > th,
+.bootgrid-table th,
+.tabulator .tabulator-header,
+.tabulator .tabulator-header .tabulator-col {
+  color: var(--of-muted) !important;
+  background: var(--of-mica-solid) !important;
+  border-color: var(--of-border) !important;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.bootgrid-table td,
+.tabulator-row,
+.tabulator-row .tabulator-cell {
+  color: var(--of-text) !important;
+  background: transparent !important;
+  border-color: var(--of-border) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd),
+.bootgrid-table tr:nth-child(odd),
+.tabulator-row.tabulator-row-odd { background: rgba(127, 127, 127, 0.045) !important; }
+
+.table-hover > tbody > tr:hover,
+.bootgrid-table tbody tr:hover,
+.tabulator-row:hover { background: var(--of-accent-soft) !important; }
+
+.pagination > li > a,
+.pagination > li > span,
+.nav-tabs > li > a {
+  color: var(--of-text) !important;
+  background: transparent !important;
+  border-color: var(--of-border) !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.nav-tabs > li.active > a,
+.nav-pills > li.active > a {
+  color: var(--of-accent) !important;
+  background: var(--of-accent-soft) !important;
+  border-color: var(--of-accent-border) !important;
+}
+
+.label,
+.badge { border-radius: 999px !important; }
+.text-muted,
+.help-block,
+small { color: var(--of-muted) !important; }
+.text-success { color: var(--of-success) !important; }
+.text-warning { color: var(--of-warning) !important; }
+.text-danger { color: var(--of-danger) !important; }
+
+.alert {
+  color: var(--of-text) !important;
+  background: var(--of-layer) !important;
+  border-width: 1px 1px 1px 4px !important;
+  border-radius: var(--of-radius-sm) !important;
+}
+.alert-info { border-left-color: var(--of-accent) !important; }
+.alert-success { border-left-color: var(--of-success) !important; }
+.alert-warning { border-left-color: var(--of-warning) !important; }
+.alert-danger { border-left-color: var(--of-danger) !important; }
+
+hr { border-color: var(--of-border) !important; }
+pre,
+code {
+  color: var(--of-text) !important;
+  background: rgba(127, 127, 127, 0.10) !important;
+  border-color: var(--of-border) !important;
+  border-radius: var(--of-radius-sm) !important;
+}
+
+/* Avoid translucency and expensive blur where unsupported or unwanted. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .navbar,
+  #sidebar,
+  .sidebar,
+  .page-sidebar,
+  .panel,
+  .card,
+  .well,
+  .modal-content,
+  .widgetdiv,
+  .dropdown-menu { background: var(--of-mica-solid) !important; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root { --of-mica: var(--of-mica-solid); --of-layer: var(--of-mica-solid); --of-blur: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 767px) {
+  :root { --of-radius: 8px; }
+  body { background-attachment: scroll !important; }
+  .panel,
+  .card,
+  .well,
+  .widgetdiv { box-shadow: 0 4px 18px rgba(20, 35, 55, 0.10) !important; }
+}
+
+@media print {
+  :root { color-scheme: light; --of-text: #000; --of-bg: #fff; --of-layer: #fff; --of-mica: #fff; }
+  body { background: #fff !important; }
+  .panel,
+  .card,
+  .well,
+  .widgetdiv { box-shadow: none !important; backdrop-filter: none !important; }
+}
