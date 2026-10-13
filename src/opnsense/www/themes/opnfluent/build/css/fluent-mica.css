@@ -292,10 +292,20 @@ header.navbar {
   margin: 2px 8px 6px 28px !important;
   color: var(--of-text) !important;
   background: rgba(127, 127, 127, 0.04) !important;
-  border: 0 !important;
-  border-left: 1px solid var(--of-border-strong) !important;
+  border: 1px solid var(--of-border-strong) !important;
   border-radius: var(--of-radius-sm) !important;
   box-shadow: none !important;
+}
+
+#navigation #mainmenu .active-menu {
+  width: fit-content !important;
+  max-width: calc(100% - 36px) !important;
+  overflow: hidden !important;
+}
+
+#navigation #mainmenu .active-menu a.list-group-item {
+  margin-left: 0 !important;
+  border-radius: 0 !important;
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapsing,
