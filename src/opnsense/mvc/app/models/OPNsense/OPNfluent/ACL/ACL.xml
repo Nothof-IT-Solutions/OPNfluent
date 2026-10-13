@@ -1,0 +1,10 @@
+<acl>
+  <page-system-settings-theme-branding>
+    <name>System: Settings: Theme &amp; Branding</name>
+    <patterns>
+      <pattern>ui/opnfluent</pattern>
+      <pattern>ui/opnfluent/*</pattern>
+      <pattern>api/opnfluent/settings/*</pattern>
+    </patterns>
+  </page-system-settings-theme-branding>
+</acl>

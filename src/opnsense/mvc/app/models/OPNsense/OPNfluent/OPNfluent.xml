@@ -1,0 +1,88 @@
+<model>
+  <mount>//OPNsense/OPNfluent/general</mount>
+  <description>OPNfluent theme and branding settings</description>
+  <version>1.0.0</version>
+  <items>
+    <colorMode type="OptionField">
+        <Required>Y</Required>
+        <Default>auto</Default>
+        <OptionValues>
+          <auto>Automatic</auto>
+          <light>Light</light>
+          <dark>Dark</dark>
+        </OptionValues>
+    </colorMode>
+    <accentLight type="TextField">
+        <Required>Y</Required>
+        <Default>#0067c0</Default>
+        <Mask>/^#[0-9a-fA-F]{6}$/</Mask>
+        <ValidationMessage>Enter a six-digit hexadecimal color, for example #0067c0.</ValidationMessage>
+    </accentLight>
+    <accentDark type="TextField">
+        <Required>Y</Required>
+        <Default>#60a5fa</Default>
+        <Mask>/^#[0-9a-fA-F]{6}$/</Mask>
+        <ValidationMessage>Enter a six-digit hexadecimal color, for example #60a5fa.</ValidationMessage>
+    </accentDark>
+    <backgroundLight type="TextField">
+        <Required>Y</Required>
+        <Default>#e9f0f7</Default>
+        <Mask>/^#[0-9a-fA-F]{6}$/</Mask>
+        <ValidationMessage>Enter a six-digit hexadecimal color.</ValidationMessage>
+    </backgroundLight>
+    <backgroundDark type="TextField">
+        <Required>Y</Required>
+        <Default>#111820</Default>
+        <Mask>/^#[0-9a-fA-F]{6}$/</Mask>
+        <ValidationMessage>Enter a six-digit hexadecimal color.</ValidationMessage>
+    </backgroundDark>
+    <surfaceLight type="TextField">
+        <Required>Y</Required>
+        <Default>#f8fbff</Default>
+        <Mask>/^#[0-9a-fA-F]{6}$/</Mask>
+        <ValidationMessage>Enter a six-digit hexadecimal color.</ValidationMessage>
+    </surfaceLight>
+    <surfaceDark type="TextField">
+        <Required>Y</Required>
+        <Default>#1c242e</Default>
+        <Mask>/^#[0-9a-fA-F]{6}$/</Mask>
+        <ValidationMessage>Enter a six-digit hexadecimal color.</ValidationMessage>
+    </surfaceDark>
+    <surfaceOpacity type="IntegerField">
+        <Required>Y</Required>
+        <Default>84</Default>
+        <MinimumValue>60</MinimumValue>
+        <MaximumValue>100</MaximumValue>
+        <ValidationMessage>Surface opacity must be between 60 and 100 percent.</ValidationMessage>
+    </surfaceOpacity>
+    <blurRadius type="IntegerField">
+        <Required>Y</Required>
+        <Default>22</Default>
+        <MinimumValue>0</MinimumValue>
+        <MaximumValue>40</MaximumValue>
+        <ValidationMessage>Blur radius must be between 0 and 40 pixels.</ValidationMessage>
+    </blurRadius>
+    <cornerRadius type="IntegerField">
+        <Required>Y</Required>
+        <Default>10</Default>
+        <MinimumValue>0</MinimumValue>
+        <MaximumValue>24</MaximumValue>
+        <ValidationMessage>Corner radius must be between 0 and 24 pixels.</ValidationMessage>
+    </cornerRadius>
+    <titlePrefix type="TextField">
+        <Required>N</Required>
+        <Mask>/^[^\x00-\x1f\x7f]{0,64}$/u</Mask>
+        <ValidationMessage>The title prefix may contain up to 64 printable characters.</ValidationMessage>
+    </titlePrefix>
+    <logoPath type="TextField">
+        <Required>N</Required>
+        <Mask>/^\/[0-9a-zA-Z._~!$&amp;'()*+,;=:@%\/-]{1,255}$/u</Mask>
+        <ValidationMessage>Use a local absolute web path beginning with /.</ValidationMessage>
+    </logoPath>
+    <faviconPath type="TextField">
+        <Required>N</Required>
+        <Mask>/^\/[0-9a-zA-Z._~!$&amp;'()*+,;=:@%\/-]{1,255}$/u</Mask>
+        <ValidationMessage>Use a local absolute web path beginning with /.</ValidationMessage>
+    </faviconPath>
+  </items>
+</model>

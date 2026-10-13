@@ -59,6 +59,33 @@
   }
 }
 
+/* Explicit modes are set by Theme & Branding and override the OS preference. */
+:root[data-opnfluent-mode="light"] {
+  color-scheme: light;
+  --of-text: #18202a;
+  --of-muted: #5d6672;
+  --of-border: rgba(25, 35, 48, 0.13);
+  --of-border-strong: rgba(25, 35, 48, 0.21);
+  --of-shadow: 0 8px 30px rgba(20, 35, 55, 0.10);
+  --of-shadow-raised: 0 12px 38px rgba(20, 35, 55, 0.16);
+  --of-success: #0f7b0f;
+  --of-warning: #9d5d00;
+  --of-danger: #c42b1c;
+}
+
+:root[data-opnfluent-mode="dark"] {
+  color-scheme: dark;
+  --of-text: #f3f6fa;
+  --of-muted: #b6c0cd;
+  --of-border: rgba(255, 255, 255, 0.10);
+  --of-border-strong: rgba(255, 255, 255, 0.18);
+  --of-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+  --of-shadow-raised: 0 14px 42px rgba(0, 0, 0, 0.38);
+  --of-success: #6ccb5f;
+  --of-warning: #f7c663;
+  --of-danger: #ff8b83;
+}
+
 html,
 body {
   min-height: 100%;

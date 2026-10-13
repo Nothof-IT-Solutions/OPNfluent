@@ -1,0 +1,77 @@
+<form>
+  <field>
+    <id>general.colorMode</id>
+    <label>Appearance</label>
+    <type>dropdown</type>
+    <help>Follow the operating system preference or force a light or dark appearance.</help>
+  </field>
+  <field>
+    <id>general.accentLight</id>
+    <label>Accent color (light)</label>
+    <type>text</type>
+    <help>Six-digit hexadecimal color used for actions, links and selection in light mode.</help>
+  </field>
+  <field>
+    <id>general.accentDark</id>
+    <label>Accent color (dark)</label>
+    <type>text</type>
+    <help>Six-digit hexadecimal color used for actions, links and selection in dark mode.</help>
+  </field>
+  <field>
+    <id>general.backgroundLight</id>
+    <label>Page background (light)</label>
+    <type>text</type>
+  </field>
+  <field>
+    <id>general.backgroundDark</id>
+    <label>Page background (dark)</label>
+    <type>text</type>
+  </field>
+  <field>
+    <id>general.surfaceLight</id>
+    <label>Mica surface (light)</label>
+    <type>text</type>
+    <help>Base color for navigation, cards, dialogs and flyouts.</help>
+  </field>
+  <field>
+    <id>general.surfaceDark</id>
+    <label>Mica surface (dark)</label>
+    <type>text</type>
+  </field>
+  <field>
+    <id>general.surfaceOpacity</id>
+    <label>Surface opacity (%)</label>
+    <type>text</type>
+    <help>Allowed range: 60–100. Reduced-transparency preferences still take precedence.</help>
+  </field>
+  <field>
+    <id>general.blurRadius</id>
+    <label>Backdrop blur (px)</label>
+    <type>text</type>
+    <help>Allowed range: 0–40.</help>
+  </field>
+  <field>
+    <id>general.cornerRadius</id>
+    <label>Corner radius (px)</label>
+    <type>text</type>
+    <help>Allowed range: 0–24.</help>
+  </field>
+  <field>
+    <id>general.titlePrefix</id>
+    <label>Page title prefix</label>
+    <type>text</type>
+    <help>Optional text placed before the original OPNsense browser title.</help>
+  </field>
+  <field>
+    <id>general.logoPath</id>
+    <label>Logo path</label>
+    <type>text</type>
+    <help>Optional same-origin web path, for example /ui/themes/opnfluent/build/images/company-logo.svg.</help>
+  </field>
+  <field>
+    <id>general.faviconPath</id>
+    <label>Favicon path</label>
+    <type>text</type>
+    <help>Optional same-origin web path to a PNG, SVG or ICO file.</help>
+  </field>
+</form>

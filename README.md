@@ -11,11 +11,14 @@ so legacy pages and newer MVC views remain usable.
 - Accessible keyboard focus, status colors and high-contrast text
 - Responsive layout and reduced-motion/reduced-transparency fallbacks
 - Styling for Bootstrap tables, Bootgrid, Tabulator, dashboard widgets and forms
+- Configuration page at **System > Settings > Theme & Branding**
+- Configurable light/dark colors, Mica opacity, blur and corner radius
+- Optional page-title prefix, navigation logo and favicon
 - No external web fonts, scripts, CDNs or runtime network requests
 
 ## Manual installation
 
-Copy the theme directory to the firewall (as `root`):
+For the theme only, copy the theme directory to the firewall (as `root`):
 
 ```sh
 scp -r src/opnsense/www/themes/opnfluent root@FIREWALL:/tmp/
@@ -25,6 +28,31 @@ cp -R /tmp/opnfluent /usr/local/opnsense/www/themes/
 
 Then select **System > Settings > Administration > Theme > opnfluent** and
 save. Keep an existing admin session open until the new theme has been checked.
+
+The **Theme & Branding** settings page is part of the packaged plugin and is
+not installed by the theme-only copy command. To install it manually for
+development, copy the complete contents of `src/opnsense/` over
+`/usr/local/opnsense/`, then rebuild the OPNsense menu and ACL caches or reboot.
+Production installations should use the generated `os-theme-opnfluent` package.
+
+## Theme & Branding settings
+
+After installing the complete plugin, open **System > Settings > Theme &
+Branding**. Settings are validated and stored in the standard OPNsense
+configuration tree under `OPNsense/OPNfluent`.
+
+Logo and favicon values must be local web paths. Place custom assets in the
+theme's `build/images` directory (ideally as part of your package/deployment)
+and use paths such as:
+
+```text
+/ui/themes/opnfluent/build/images/company-logo.svg
+/ui/themes/opnfluent/build/images/company-favicon.png
+```
+
+External URLs and data URLs are deliberately rejected. This preserves the
+OPNsense content-security policy and prevents browsers from leaking firewall
+access metadata to third parties.
 
 To uninstall, first switch back to the `opnsense` theme, then remove:
 
