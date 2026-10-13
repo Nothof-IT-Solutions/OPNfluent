@@ -7551,12 +7551,12 @@ header.navbar {
   main.page-content {
     left: 0 !important;
     width: 100% !important;
-    padding-left: 252px !important;
+    padding-left: 282px !important;
   }
 
   #navigation.page-side,
   #navigation.page-side > div.row > nav.page-side-nav {
-    width: 220px !important;
+    width: 250px !important;
   }
 
   #navigation.page-side {
@@ -7618,11 +7618,18 @@ header.navbar {
 
 #navigation #mainmenu a.list-group-item:hover,
 #navigation #mainmenu a.list-group-item:focus,
-#navigation #mainmenu a.list-group-item.active,
-#navigation #mainmenu a.list-group-item.selected,
-#navigation #mainmenu div.active > a.list-group-item {
+#navigation #mainmenu a.list-group-item[aria-expanded="true"] {
   color: var(--of-accent) !important;
   background: var(--of-accent-soft) !important;
+}
+
+#navigation #mainmenu a.list-group-item.active,
+#navigation #mainmenu a.list-group-item.selected,
+#navigation #mainmenu div.active-menu > a.list-group-item.active {
+  color: var(--of-accent) !important;
+  background: var(--of-accent-soft) !important;
+  box-shadow: inset 3px 0 0 var(--of-accent) !important;
+  font-weight: 600 !important;
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in,
@@ -7632,7 +7639,7 @@ header.navbar {
   position: static !important;
   left: auto !important;
   width: auto !important;
-  margin: 2px 8px 6px 24px !important;
+  margin: 2px 8px 6px 28px !important;
   color: var(--of-text) !important;
   background: rgba(127, 127, 127, 0.04) !important;
   border: 0 !important;
@@ -7660,9 +7667,11 @@ header.navbar {
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > a.list-group-item,
 #navigation.page-side > div > nav > #mainmenu > div > div.collapsing > a.list-group-item {
-  width: calc(100% - 32px) !important;
-  margin-left: 32px !important;
-  padding-left: 14px !important;
+  width: auto !important;
+  margin: 0 4px !important;
+  padding: 7px 10px 7px 36px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in {
@@ -7670,9 +7679,9 @@ header.navbar {
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in > a.list-group-item {
-  width: calc(100% - 48px) !important;
-  margin-left: 48px !important;
-  padding-left: 14px !important;
+  width: auto !important;
+  margin: 0 4px !important;
+  padding: 7px 10px 7px 28px !important;
 }
 
 .page-content,
@@ -7851,6 +7860,24 @@ button[type="submit"],
 input[type="submit"] {
   color: #fff !important;
   background: var(--of-accent) !important;
+  border-color: transparent !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+button[type="submit"]:hover,
+button[type="submit"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  color: #fff !important;
+  background: var(--of-accent-hover) !important;
   border-color: transparent !important;
 }
 
