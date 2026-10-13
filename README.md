@@ -83,8 +83,8 @@ colour. After editing, run `tools/build-theme.ps1` to refresh the compiled
 
 ## Compatibility and recovery
 
-This first release is structured against the current official OPNsense theme
-layout and uses the Tukan compatibility layer. Because OPNsense pages and
+This release is based on the current official OPNsense 26.7 theme structure.
+Because OPNsense pages and
 plugins can introduce new markup, test the theme on a staging firewall after
 major upgrades. If a custom page is unreadable, switch the configured theme
 back to `opnsense` from another admin session.

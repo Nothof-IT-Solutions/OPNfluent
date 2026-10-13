@@ -5,58 +5,58 @@
   font-size: 15px;
   background-color: transparent;
   border: none;
-  border-top: 1px solid #c2c2c2;
+  border-top: 1px solid #E5E5E5;
 }
 
 /* theme: header */
 .tabulator .tabulator-header {
   background-color: transparent;
   border-bottom: none;
-  border-left: 1px solid #c2c2c2;
+  border-left: 1px solid #E5E5E5;
 
 }
 
 .tabulator .tabulator-header .tabulator-col {
-  border-right: 1px solid #c2c2c2;
+  border-right: 1px solid #E5E5E5;
   background-color: #fff;
-  color: #000;
+  color: #373736;
 }
 
 .tabulator .tabulator-header .tabulator-col.tabulator-sortable.tabulator-col-sorter-element:hover {
-  background-color: #eee;
+  background-color: #FBFBFB;
 }
 
 .tabulator .tabulator-headers {
   height: 100% !important; /* make sure the border below appears */
-  border-bottom: 1px solid #c2c2c2;
+  border-bottom: 1px solid #E5E5E5;
 }
 
 /*------------*/
 /* theme: body */
 .tabulator .tabulator-tableholder .tabulator-table {
   background-color: transparent;
-  border-left: 1px solid #c2c2c2;
+  border-left: 1px solid #E5E5E5;
 }
 
 .tabulator-row {
   background-color: transparent;
-  color: #000;
+  color: #373736;
 }
 
 .tabulator-row.tabulator-row-odd {
-  background-color: #fff;
+  background-color: #FBFBFB;
 }
 
 .tabulator-row.tabulator-row-odd.tabulator-selectable:hover:not(.tabulator-selected) {
-  background-color: #eee;
+  background-color: #f0f3f9;
 }
 
 .tabulator-row.tabulator-row-even {
-  background-color: #eee;
+    background-color: #fff;
 }
 
 .tabulator-row.tabulator-row-even.tabulator-selectable:hover:not(.tabulator-selected) {
-  background-color: #eee;
+  background-color: #f0f3f9;
 }
 
 .tabulator .tabulator-tableholder {
@@ -64,12 +64,12 @@
 }
 
 .tabulator-row.tabulator-selected {
-  background-color: #eee;
+  background-color: #e3e8f0;
 }
 
 .tabulator-row.tabulator-selected:hover {
   cursor: pointer;
-  background-color: #eee;
+  background-color: #e3e8f0;
 }
 
 .tabulator .tabulator-alert .tabulator-alert-msg.tabulator-alert-state-msg {
@@ -83,17 +83,46 @@
 .tabulator-row .tabulator-cell.tabulator-frozen.tabulator-frozen-right {
 }
 
+/* Tabulator groupBy row styles */
+.tabulator-row.tabulator-group {
+  border: none;
+  pointer-events: none;
+}
+
+.tabulator-row.tabulator-group span {
+  margin-left: 0;
+  color: #373736;
+}
+
+.tabulator-row .badge.chip {
+  background-color: #31708f;
+  color: #FFF;
+  font-size: 10px;
+  padding: 2px 4px;
+  position: relative;
+  top: -1px;
+}
+
+.tabulator-row.tabulator-group .tabulator-group-toggle,
+.tabulator-row.tabulator-group .tabulator-group-toggle * {
+  pointer-events: auto;
+}
+
+.tabulator-row.tabulator-group:has(> .tabulator-group-toggle:only-child) {
+  display: none; /* Trick to hide empty groupBy header rows */
+}
+
 /* Checkbox column styles */
 .tabulator .tabulator-header .tabulator-frozen.tabulator-frozen-left {
-  border-right: 1px solid #c2c2c2; /* separates checkbox column from table rows */
-  border-left: 1px solid #c2c2c2;
+  border-right: 1px solid #E5E5E5; /* separates checkbox column from table rows */
+  border-left: 1px solid #FBFBFB;
 }
 
 .tabulator-row .tabulator-cell.tabulator-frozen.tabulator-frozen-left {
-  border-right: 1px solid #c2c2c2;
-  border-top: 1px solid #c2c2c2;
-  border-bottom: 1px solid #c2c2c2;
-  border-left: 1px solid #c2c2c2;
+  border-right: 1px solid #E5E5E5;
+  border-top: 1px solid #FBFBFB;
+  border-bottom: 1px solid #E5E5E5;
+  border-left: 1px solid #FBFBFB;
 }
 
 .tabulator-col.tabulator-row-header.tabulator-frozen.tabulator-frozen-left {
@@ -109,8 +138,8 @@
   white-space: nowrap;
   line-height: 1.2;
   vertical-align: top;
-  border-bottom: 1px solid #c2c2c2;
-  border-right: 1px solid #c2c2c2;
+  border-bottom: 1px solid rgba(229, 229, 229, 0.5);
+  border-right: 1px solid rgba(229, 229, 229, 0.5);
 }
 
 /*-------------*/
@@ -121,43 +150,43 @@
 }
 
 .tabulator .tabulator-footer .tabulator-page {
-  background-color: #e9e9ed;
-  color: #101218;
+  background-color: #fff;
+  color: #C03E14;
 }
 
 .tabulator .tabulator-footer .tabulator-page.active {
-  background-color: #dd630d;
-  border-color: #c2c2c2;;
+  background-color: #C03E14;
+  border-color: #C03E14;
   cursor: default;
-  color: #101218;
+  color: #fff;
 }
 
 .tabulator .tabulator-footer .tabulator-page:not(disabled):hover {
-  color: #101218;
-  background-color: #dd630d;
-  border-color: #c2c2c2;;
+  color: #7b280d;
+  background-color: #eeeeee;
+  border-color: #ddd;
 }
 
 .tabulator .tabulator-footer .tabulator-page:not(disabled).active:hover {
-  background-color: #dd630d;
-  border-color: #c2c2c2;;
-  color: #101218;
+  background-color: #C03E14;
+  border-color: #C03E14;
+  color: #fff;
   cursor: default;
 }
 
 .tabulator-page-counter {
-  color: #101218;
+  color: #373736;
 }
 
 .tabulator .tabulator-footer .tabulator-paginator {
-  color: #101218;
+  color: #373736;
 }
 
 .tabulator .tabulator-footer .tabulator-page {
   border-radius: 0px;
   margin: 0px;
   padding: 6px 12px;
-  border: 1px solid #c2c2c2;;
+  border: 1px solid #E5E5E5;
 }
 
 /*----------*/
@@ -240,7 +269,7 @@
 /* Row highlight behavior */
 @keyframes highlight {
   0% {
-    background: #242424;
+    background: #ffff99;
   }
   100% {
     background: none;
@@ -282,7 +311,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;

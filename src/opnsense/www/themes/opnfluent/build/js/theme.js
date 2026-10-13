@@ -2,13 +2,6 @@
 (function () {
     'use strict';
 
-    /* MVC normally falls back to the stock theme script. Load it explicitly
-       because the OPNfluent runtime script occupies the theme override slot. */
-    var stockTheme = document.createElement('script');
-    stockTheme.src = '/ui/themes/opnsense/build/js/theme.js';
-    stockTheme.async = false;
-    document.head.appendChild(stockTheme);
-
     var originalTitle = document.title;
     var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
     var settings = null;

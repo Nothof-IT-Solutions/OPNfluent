@@ -2,4 +2,4 @@ OPNfluent is a modern, responsive theme for the OPNsense administration UI.
 It combines a Fluent-inspired visual language with layered Mica-like surfaces,
 clear focus states, accessible contrast and automatic light/dark preferences.
 
-The theme is based on the compatible OPNsense/Tukan Bootstrap theme structure.
+The theme is based on the current OPNsense administration theme structure.
