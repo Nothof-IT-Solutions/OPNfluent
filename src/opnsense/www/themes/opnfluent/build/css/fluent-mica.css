@@ -178,36 +178,38 @@ header.navbar {
 
 /* OPNsense 26.7 navigation. The stock 70px rail truncates translated labels;
    Fluent uses a readable navigation pane with inline submenus instead. */
-#navigation.col-sidebar-left,
-#navigation.col-sidebar-left > div.row > nav.page-side-nav {
+#navigation.page-side,
+#navigation.page-side > div.row > nav.page-side-nav {
   -webkit-backdrop-filter: var(--of-blur);
   backdrop-filter: var(--of-blur);
 }
 
-#navigation.col-sidebar-left {
+#navigation.page-side {
   background: var(--of-layer) !important;
   border: 1px solid var(--of-border) !important;
   border-radius: var(--of-radius) !important;
   box-shadow: var(--of-shadow) !important;
 }
 
-#navigation.col-sidebar-left > div.row > nav.page-side-nav {
+#navigation.page-side > div.row > nav.page-side-nav {
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
 }
 
 @media (min-width: 768px) {
-  main.page-content.col-lg-12 {
+  main.page-content {
+    left: 0 !important;
+    width: 100% !important;
     padding-left: 252px !important;
   }
 
-  #navigation.col-sidebar-left,
-  #navigation.col-sidebar-left > div.row > nav.page-side-nav {
+  #navigation.page-side,
+  #navigation.page-side > div.row > nav.page-side-nav {
     width: 220px !important;
   }
 
-  #navigation.col-sidebar-left {
+  #navigation.page-side {
     left: 12px !important;
     height: calc(100% - 86px) !important;
     margin-top: 74px !important;
@@ -217,8 +219,14 @@ header.navbar {
 }
 
 #navigation #mainmenu,
-#navigation #mainmenu > div {
+#navigation #mainmenu > div,
+#navigation #mainmenu.panel,
+#navigation #mainmenu > .panel.list-group {
   background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
 #navigation #mainmenu a.list-group-item {
@@ -267,10 +275,10 @@ header.navbar {
   background: var(--of-accent-soft) !important;
 }
 
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in,
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapsing,
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in,
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapsing {
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in,
+#navigation.page-side > div > nav > #mainmenu > div > div.collapsing,
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in,
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapsing {
   position: static !important;
   left: auto !important;
   width: auto !important;
@@ -283,14 +291,14 @@ header.navbar {
   box-shadow: none !important;
 }
 
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapsing,
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapsing {
+#navigation.page-side > div > nav > #mainmenu > div > div.collapsing,
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapsing {
   display: block !important;
   overflow: hidden !important;
 }
 
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in a.list-group-item,
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapsing a.list-group-item {
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in a.list-group-item,
+#navigation.page-side > div > nav > #mainmenu > div > div.collapsing a.list-group-item {
   position: static !important;
   left: auto !important;
   display: block !important;
@@ -300,12 +308,21 @@ header.navbar {
   white-space: normal !important;
 }
 
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in {
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > a.list-group-item,
+#navigation.page-side > div > nav > #mainmenu > div > div.collapsing > a.list-group-item {
+  width: calc(100% - 32px) !important;
+  margin-left: 32px !important;
+  padding-left: 14px !important;
+}
+
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in {
   margin-left: 18px !important;
 }
 
-#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in > a.list-group-item {
-  padding-left: 34px !important;
+#navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in > a.list-group-item {
+  width: calc(100% - 48px) !important;
+  margin-left: 48px !important;
+  padding-left: 14px !important;
 }
 
 .page-content,
@@ -313,6 +330,31 @@ header.navbar {
 .page-content-main {
   color: var(--of-text) !important;
   background: transparent !important;
+}
+
+main.page-content {
+  min-height: 100vh !important;
+  height: auto !important;
+}
+
+main.page-content > .row {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: calc(100vh - 62px) !important;
+  height: auto !important;
+}
+
+.page-content-main {
+  flex: 1 0 auto !important;
+}
+
+.page-foot {
+  position: static !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  color: var(--of-muted) !important;
+  background: transparent !important;
+  border-color: var(--of-border) !important;
 }
 
 /* Mica cards, panels and widgets */
@@ -604,8 +646,8 @@ code {
 @media (max-width: 767px) {
   :root { --of-radius: 8px; }
   body { background-attachment: scroll !important; }
-  #navigation.col-sidebar-left.collapse.in,
-  #navigation.col-sidebar-left.collapse.in > div.row > nav.page-side-nav {
+  #navigation.page-side.collapse.in,
+  #navigation.page-side.collapse.in > div.row > nav.page-side-nav {
     width: 220px !important;
   }
   .panel,
