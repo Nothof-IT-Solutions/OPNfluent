@@ -7011,6 +7011,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 .nav-tabs > li {
   border-radius: 0px;
   border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   margin-right: 2px;
 }
 
@@ -7018,6 +7019,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
   background: #FBFBFB;
   border-radius: 0px;
   border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   margin-right: 0px;
 }
 
@@ -7165,22 +7167,6 @@ hr {
 
 .list-group-submenu a {
   padding-left: 56px;
-}
-
-.active-menu-title, .active-menu a {
-  text-decoration: none;
-  position: relative;
-  background-color: #F7F7F7;
-}
-.active-menu-title:before, .active-menu a:before {
-  width: 3px;
-}
-.active-menu-title.active, .active-menu a.active {
-  background-color: #E8E8E8;
-}
-
-.active-menu a:before {
-  background: rgb(241.320754717, 152.4056603774, 123.679245283);
 }
 
 .alert.alert-danger {
@@ -7581,7 +7567,7 @@ header.navbar {
 
 #navigation #mainmenu a.list-group-item {
   color: var(--of-text) !important;
-  background: transparent !important;
+  /* background: transparent !important; */
   border-color: transparent !important;
   border-radius: var(--of-radius-sm) !important;
   transition: background-color 120ms ease, color 120ms ease !important;
@@ -7601,6 +7587,30 @@ header.navbar {
   text-overflow: ellipsis !important;
   border-right: 0 !important;
 }
+
+.active-menu-title, .active-menu a {
+  text-decoration: none;
+  position: relative;
+  background-color: #F7F7F7;
+}
+
+#navigation #mainmenu .active-menu-title, .active-menu a {
+  text-decoration: none;
+  position: relative;
+  background-color: #F7F7F7!important;
+}
+
+.active-menu-title:before, .active-menu a:before {
+  width: 3px;
+}
+.active-menu-title.active, .active-menu a.active {
+  background-color: #E8E8E8;
+}
+
+.active-menu a:before {
+  background: rgb(241.320754717, 152.4056603774, 123.679245283);
+}
+
 
 #navigation #mainmenu > div > a.list-group-item > span.fa,
 #navigation #mainmenu > div > a.list-group-item > span.fa-solid,
@@ -7638,13 +7648,14 @@ header.navbar {
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapsing {
   position: static !important;
   left: auto !important;
-  width: auto !important;
-  margin: 2px 8px 6px 28px !important;
+  width: calc(100% - 40px) !important;
+  margin: 2px 28px 6px 28px !important;
   color: var(--of-text) !important;
   background: rgba(127, 127, 127, 0.04) !important;
   border: 1px solid var(--of-border-strong) !important;
   border-radius: var(--of-radius-sm) !important;
   box-shadow: none !important;
+  overflow: hidden !important;
 }
 
 #navigation #mainmenu .active-menu {
@@ -7671,27 +7682,29 @@ header.navbar {
   display: block !important;
   padding: 7px 12px 7px 38px !important;
   color: var(--of-text) !important;
-  background: transparent !important;
+  /* background: transparent !important; */
   white-space: normal !important;
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > a.list-group-item,
 #navigation.page-side > div > nav > #mainmenu > div > div.collapsing > a.list-group-item {
   width: auto !important;
-  margin: 0 4px !important;
-  padding: 7px 10px 7px 36px !important;
+  margin: 0 0px !important;
+  padding: 7px 10px 7px 15px !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
+  border-radius: 0px !important;
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in {
   margin-left: 18px !important;
+  width: calc(100% - 30px)!important;
 }
 
 #navigation.page-side > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in > a.list-group-item {
   width: auto !important;
-  margin: 0 4px !important;
-  padding: 7px 10px 7px 28px !important;
+  margin: 0 0px !important;
+  padding: 7px 10px 7px 15px !important;
 }
 
 .page-content,
@@ -8050,4 +8063,8 @@ code {
   .card,
   .well,
   .widgetdiv { box-shadow: none !important; backdrop-filter: none !important; }
+}
+
+.toggle-sidebar {
+  display: none !important;
 }
