@@ -180,19 +180,26 @@ header.navbar {
    Fluent uses a readable navigation pane with inline submenus instead. */
 #navigation.col-sidebar-left,
 #navigation.col-sidebar-left > div.row > nav.page-side-nav {
-  background: var(--of-mica) !important;
-  border-color: var(--of-border) !important;
   -webkit-backdrop-filter: var(--of-blur);
   backdrop-filter: var(--of-blur);
 }
 
+#navigation.col-sidebar-left {
+  background: var(--of-layer) !important;
+  border: 1px solid var(--of-border) !important;
+  border-radius: var(--of-radius) !important;
+  box-shadow: var(--of-shadow) !important;
+}
+
 #navigation.col-sidebar-left > div.row > nav.page-side-nav {
-  box-shadow: 1px 0 0 var(--of-border), 4px 0 24px rgba(20, 35, 55, 0.07) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 @media (min-width: 768px) {
   main.page-content.col-lg-12 {
-    padding-left: 242px !important;
+    padding-left: 252px !important;
   }
 
   #navigation.col-sidebar-left,
@@ -201,6 +208,9 @@ header.navbar {
   }
 
   #navigation.col-sidebar-left {
+    left: 12px !important;
+    height: calc(100% - 86px) !important;
+    margin-top: 74px !important;
     overflow-x: hidden !important;
     overflow-y: auto !important;
   }
@@ -220,10 +230,13 @@ header.navbar {
 }
 
 #navigation #mainmenu > div > a.list-group-item {
+  display: flex !important;
+  align-items: center !important;
   width: auto !important;
   height: 44px !important;
   margin: 4px 8px !important;
-  padding: 11px 12px !important;
+  padding: 0 12px !important;
+  line-height: 20px !important;
   text-align: left !important;
   white-space: nowrap !important;
   overflow: hidden !important;
@@ -236,11 +249,13 @@ header.navbar {
 #navigation #mainmenu > div > a.list-group-item > span.glyphicon,
 #navigation #mainmenu > div > a.list-group-item > span.__iconspacer {
   width: 28px !important;
+  min-width: 28px !important;
   height: auto !important;
   margin: 0 !important;
   font-size: 16px !important;
   text-align: center !important;
   vertical-align: middle !important;
+  flex: 0 0 28px !important;
 }
 
 #navigation #mainmenu a.list-group-item:hover,
@@ -259,10 +274,11 @@ header.navbar {
   position: static !important;
   left: auto !important;
   width: auto !important;
-  margin: 2px 8px 6px !important;
+  margin: 2px 8px 6px 24px !important;
   color: var(--of-text) !important;
   background: rgba(127, 127, 127, 0.04) !important;
   border: 0 !important;
+  border-left: 1px solid var(--of-border-strong) !important;
   border-radius: var(--of-radius-sm) !important;
   box-shadow: none !important;
 }
@@ -278,10 +294,18 @@ header.navbar {
   position: static !important;
   left: auto !important;
   display: block !important;
-  padding: 7px 12px 7px 40px !important;
+  padding: 7px 12px 7px 38px !important;
   color: var(--of-text) !important;
   background: transparent !important;
   white-space: normal !important;
+}
+
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in {
+  margin-left: 18px !important;
+}
+
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in > a.list-group-item {
+  padding-left: 34px !important;
 }
 
 .page-content,
