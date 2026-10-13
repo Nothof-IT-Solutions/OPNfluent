@@ -5,6 +5,7 @@
       <pattern>ui/opnfluent</pattern>
       <pattern>ui/opnfluent/*</pattern>
       <pattern>api/opnfluent/settings/*</pattern>
+      <pattern>api/opnfluent/assets/*</pattern>
     </patterns>
   </page-system-settings-theme-branding>
 </acl>

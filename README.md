@@ -13,7 +13,7 @@ so legacy pages and newer MVC views remain usable.
 - Styling for Bootstrap tables, Bootgrid, Tabulator, dashboard widgets and forms
 - Configuration page at **System > Settings > Theme & Branding**
 - Configurable light/dark colors, Mica opacity, blur and corner radius
-- Optional page-title prefix, navigation logo and favicon
+- Optional page-title prefix plus validated logo and favicon uploads
 - No external web fonts, scripts, CDNs or runtime network requests
 
 ## Manual installation
@@ -41,9 +41,14 @@ After installing the complete plugin, open **System > Settings > Theme &
 Branding**. Settings are validated and stored in the standard OPNsense
 configuration tree under `OPNsense/OPNfluent`.
 
-Logo and favicon values must be local web paths. Place custom assets in the
-theme's `build/images` directory (ideally as part of your package/deployment)
-and use paths such as:
+Logo and favicon images can be uploaded directly on the settings page. Uploads
+accept PNG, JPEG and WebP images (plus ICO for favicons), validate their actual
+image type, dimensions and size, and use content-hashed filenames to avoid
+stale browser caches.
+
+Alternatively, logo and favicon values may reference local web paths. Place
+custom assets in the theme's `build/images` directory (ideally as part of your
+package/deployment) and use paths such as:
 
 ```text
 /ui/themes/opnfluent/build/images/company-logo.svg
