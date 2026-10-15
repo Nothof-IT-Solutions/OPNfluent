@@ -8068,3 +8068,7 @@ code {
 .toggle-sidebar {
   display: none !important;
 }
+
+.navbar-form[role="search"] > .input-group > .input-group-addon {
+  display: none!important;
+}
