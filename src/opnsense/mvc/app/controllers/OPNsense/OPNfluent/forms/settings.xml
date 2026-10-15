@@ -74,4 +74,16 @@
     <type>text</type>
     <help>Optional same-origin web path to a PNG, SVG or ICO file.</help>
   </field>
+  <field>
+    <id>general.hideFooter</id>
+    <label>Hide footer</label>
+    <type>checkbox</type>
+    <help>Hide the footer on both the login page and authenticated administration pages.</help>
+  </field>
+  <field>
+    <id>general.customCss</id>
+    <label>Custom CSS</label>
+    <type>textbox</type>
+    <help>Optional CSS appended after the theme styles. Use carefully; invalid rules can affect the administration interface.</help>
+  </field>
 </form>

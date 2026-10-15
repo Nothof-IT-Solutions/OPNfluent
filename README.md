@@ -14,6 +14,7 @@ so legacy pages and newer MVC views remain usable.
 - Configuration page at **System > Settings > Theme & Branding**
 - Configurable light/dark colors, Mica opacity, blur and corner radius
 - Optional page-title prefix plus validated logo and favicon uploads
+- Login-page branding, optional footer hiding and custom CSS
 - No external web fonts, scripts, CDNs or runtime network requests
 
 ## Installation from an OPNsense repository
@@ -60,6 +61,12 @@ After installing the complete plugin, open **System > Settings > Theme &
 Branding**. Settings are validated and stored in the standard OPNsense
 configuration tree under `OPNsense/OPNfluent`.
 
+The selected logo, favicon, title, appearance and accent colors also apply to
+the unauthenticated login page. A generated, read-only JSON file exposes only
+these cosmetic values; the management API remains protected by authentication.
+The footer can be hidden globally, and optional custom CSS is appended after
+the theme stylesheet.
+
 Logo and favicon images can be uploaded directly on the settings page. Uploads
 accept PNG, JPEG and WebP images (plus ICO for favicons), validate their actual
 image type, dimensions and size, and use content-hashed filenames to avoid
@@ -96,7 +103,7 @@ OPNsense `plugins` checkout, then run:
 
 The official plugin framework stages all files, generates the package manifest
 and install/deinstall hooks, and produces
-`work/pkg/os-theme-opnfluent-1.4.2.pkg`.
+`work/pkg/os-theme-opnfluent-1.5.0.pkg`.
 
 Installing that file directly with `pkg add` is suitable for testing, but the
 OPNsense firmware page will label it **orphaned** until the same package is
@@ -109,7 +116,7 @@ regenerate its catalogue:
 
 ```sh
 ./tools/update-plugin-repository.sh \
-  work/pkg/os-theme-opnfluent-1.4.2.pkg /path/to/repository
+  work/pkg/os-theme-opnfluent-1.5.0.pkg /path/to/repository
 ```
 
 For a signed repository, feed the package into the repository's existing

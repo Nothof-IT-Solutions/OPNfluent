@@ -1,7 +1,7 @@
 <model>
   <mount>//OPNsense/OPNfluent/general</mount>
   <description>OPNfluent theme and branding settings</description>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <items>
     <colorMode type="OptionField">
         <Required>Y</Required>
@@ -84,5 +84,13 @@
         <Mask>/^\/[0-9a-zA-Z._~!$&amp;'()*+,;=:@%\/-]{1,255}$/u</Mask>
         <ValidationMessage>Use a local absolute web path beginning with /.</ValidationMessage>
     </faviconPath>
+    <hideFooter type="BooleanField">
+        <Default>0</Default>
+    </hideFooter>
+    <customCss type="TextField">
+        <Required>N</Required>
+        <Mask>/^[\s\S]{0,32768}$/</Mask>
+        <ValidationMessage>Custom CSS must not exceed 32768 characters.</ValidationMessage>
+    </customCss>
   </items>
 </model>

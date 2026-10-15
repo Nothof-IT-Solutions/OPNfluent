@@ -7335,7 +7335,7 @@ div[data-for*=help_for] {
 
 /* === OPNfluent Mica overlay (generated) === */
 /*
- * OPNfluent 1.4.2
+ * OPNfluent 1.5.0
  * Fluent-inspired Mica surface layer for OPNsense.
  * Built on the current OPNsense theme. Targeted !important rules are used
  * where the administration UI's Bootstrap selectors have higher specificity.
@@ -7429,13 +7429,19 @@ body {
   font-family: var(--of-font) !important;
 }
 
-body {
+html {
   background-color: var(--of-bg) !important;
   background-image:
     radial-gradient(circle at 9% 0%, var(--of-bg-glow), transparent 34rem),
     radial-gradient(circle at 92% 18%, rgba(130, 93, 255, 0.12), transparent 30rem),
     linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 50%) !important;
   background-attachment: fixed !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+body {
+  background: transparent !important;
 }
 
 body,
@@ -7443,6 +7449,11 @@ body,
 #content,
 .content-wrapper {
   background-color: transparent !important;
+}
+
+:root[data-opnfluent-hide-footer="true"] .login-foot,
+:root[data-opnfluent-hide-footer="true"] .page-foot {
+  display: none !important;
 }
 
 /* Login shell */
@@ -8179,7 +8190,6 @@ code {
 
 @media (max-width: 767px) {
   :root { --of-radius: 8px; }
-  body { background-attachment: scroll !important; }
   #navigation.page-side.collapse.in,
   #navigation.page-side.collapse.in > div.row > nav.page-side-nav {
     width: 220px !important;

@@ -13,7 +13,9 @@ $(document).ready(function () {
         cornerRadius: '10',
         titlePrefix: '',
         logoPath: '',
-        faviconPath: ''
+        faviconPath: '',
+        hideFooter: '0',
+        customCss: ''
     };
 
     function updatePreview(kind, path) {

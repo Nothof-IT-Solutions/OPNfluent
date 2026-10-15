@@ -100,22 +100,37 @@
                 link.href = favicon;
             });
         }
+
+        root.setAttribute(
+            'data-opnfluent-hide-footer',
+            ['1', 'true', 'yes', 'on'].indexOf(settingValue('hideFooter', '0').toLowerCase()) >= 0 ? 'true' : 'false'
+        );
+
+        var customCss = settingValue('customCss', '');
+        var customStyle = document.getElementById('opnfluent-custom-css');
+        if (!customStyle) {
+            customStyle = document.createElement('style');
+            customStyle.id = 'opnfluent-custom-css';
+            document.head.appendChild(customStyle);
+        }
+        customStyle.textContent = customCss;
     }
 
     function loadSettings() {
-        fetch('/api/opnfluent/settings/get', {
+        fetch('/ui/themes/opnfluent/build/branding.json', {
             credentials: 'same-origin',
-            headers: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json'},
+            cache: 'no-store'
         }).then(function (response) {
             if (!response.ok) {
                 throw new Error('settings unavailable');
             }
             return response.json();
         }).then(function (data) {
-            settings = data && data.general ? data.general : null;
+            settings = data && data.general ? data.general : data;
             applyBranding();
         }).catch(function () {
-            /* Login pages and restricted users keep the safe compiled defaults. */
+            /* Keep the safe compiled defaults if public branding is unavailable. */
         });
     }
 
