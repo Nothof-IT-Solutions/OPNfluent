@@ -1,3 +1,7 @@
 if [ -f /usr/local/opnsense/scripts/OPNfluent/export_branding.php ]; then
     /usr/local/bin/php /usr/local/opnsense/scripts/OPNfluent/export_branding.php || true
 fi
+
+# OPNsense derives the cache key for themed assets from this entry point.
+# Refresh it so browsers do not retain an older theme.js after upgrades.
+touch /usr/local/opnsense/www/index.php
