@@ -103,7 +103,7 @@ OPNsense `plugins` checkout, then run:
 
 The official plugin framework stages all files, generates the package manifest
 and install/deinstall hooks, and produces
-`work/pkg/os-theme-opnfluent-1.6.0.pkg`.
+`work/pkg/os-theme-opnfluent-1.6.1.pkg`.
 
 Installing that file directly with `pkg add` is suitable for testing, but the
 OPNsense firmware page will label it **orphaned** until the same package is
@@ -116,7 +116,7 @@ regenerate its catalogue:
 
 ```sh
 ./tools/update-plugin-repository.sh \
-  work/pkg/os-theme-opnfluent-1.6.0.pkg /path/to/repository
+  work/pkg/os-theme-opnfluent-1.6.1.pkg /path/to/repository
 ```
 
 For a signed repository, feed the package into the repository's existing
