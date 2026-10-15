@@ -49,18 +49,18 @@ class AssetsController extends ApiControllerBase
             return $this->failure(gettext('Unknown branding asset type.'));
         }
 
-        $files = $this->request->getUploadedFiles(false);
-        if (count($files) !== 1) {
+        if (count($_FILES) !== 1 || !isset($_FILES['image']) || !is_array($_FILES['image'])) {
             return $this->failure(gettext('Select exactly one image to upload.'));
         }
 
-        $file = array_values($files)[0];
-        if ($file->getError() !== UPLOAD_ERR_OK) {
+        $file = $_FILES['image'];
+        if (($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
             return $this->failure(gettext('The image upload did not complete successfully.'));
         }
 
         $maxBytes = $kind === 'favicon' ? 524288 : 2097152;
-        if ($file->getSize() < 1 || $file->getSize() > $maxBytes) {
+        $fileSize = filter_var($file['size'] ?? null, FILTER_VALIDATE_INT);
+        if ($fileSize === false || $fileSize < 1 || $fileSize > $maxBytes) {
             return $this->failure(sprintf(
                 gettext('The %s image must not exceed %s.'),
                 $kind,
@@ -68,7 +68,10 @@ class AssetsController extends ApiControllerBase
             ));
         }
 
-        $temporaryUpload = $file->getTempName();
+        $temporaryUpload = $file['tmp_name'] ?? '';
+        if (!is_string($temporaryUpload) || !is_uploaded_file($temporaryUpload)) {
+            return $this->failure(gettext('The temporary upload could not be verified.'));
+        }
         $imageInfo = @getimagesize($temporaryUpload);
         if ($imageInfo === false || empty($imageInfo['mime'])) {
             return $this->failure(gettext('The uploaded file is not a valid image.'));
@@ -104,7 +107,7 @@ class AssetsController extends ApiControllerBase
 
         if (!file_exists($target)) {
             $staging = self::ASSET_DIRECTORY . '/.' . bin2hex(random_bytes(12)) . '.upload';
-            if (!$file->moveTo($staging)) {
+            if (!move_uploaded_file($temporaryUpload, $staging)) {
                 return $this->failure(gettext('The uploaded image could not be stored.'));
             }
             @chmod($staging, 0644);
