@@ -8209,3 +8209,7 @@ code {
 .navbar-form[role="search"] > .input-group > .input-group-addon {
   display: none !important;
 }
+
+#menu_search_box {
+  transition: 0.5s ease-in;
+}
