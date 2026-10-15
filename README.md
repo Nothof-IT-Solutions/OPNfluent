@@ -16,7 +16,26 @@ so legacy pages and newer MVC views remain usable.
 - Optional page-title prefix plus validated logo and favicon uploads
 - No external web fonts, scripts, CDNs or runtime network requests
 
-## Manual installation
+## Installation from an OPNsense repository
+
+OPNfluent is packaged as a single plugin named `os-theme-opnfluent`. The
+package contains both the complete theme and the **Theme & Branding** settings,
+including the logo and favicon upload APIs. No separate branding plugin is
+required.
+
+After the package has been published to the custom repository already
+configured on the firewall:
+
+1. Refresh **System > Firmware > Status**.
+2. Open **System > Firmware > Plugins**.
+3. Install **os-theme-opnfluent**.
+4. Select `opnfluent` under **System > Settings > Administration > Theme**.
+5. Configure branding under **System > Settings > Theme & Branding**.
+
+The OPNsense package hooks automatically refresh the MVC model, ACL and menu
+caches during installation and removal.
+
+## Manual installation for development
 
 For the theme only, copy the theme directory to the firewall (as `root`):
 
@@ -65,11 +84,32 @@ To uninstall, first switch back to the `opnsense` theme, then remove:
 rm -rf /usr/local/opnsense/www/themes/opnfluent
 ```
 
-## Plugin packaging
+## Building the plugin package
 
-The repository follows the official OPNsense plugins layout. Place `OPNfluent`
-under `misc/theme-opnfluent` in an OPNsense plugins checkout and use the normal
-plugin build process. The resulting package name is `os-theme-opnfluent`.
+The repository follows the official OPNsense plugin layout. On an OPNsense or
+FreeBSD build host, place this project under `misc/theme-opnfluent` in an
+OPNsense `plugins` checkout, then run:
+
+```sh
+./tools/build-plugin.sh
+```
+
+The official plugin framework stages all files, generates the package manifest
+and install/deinstall hooks, and produces
+`work/pkg/os-theme-opnfluent-1.4.0.pkg`.
+
+To copy that package into an existing unsigned custom package repository and
+regenerate its catalogue:
+
+```sh
+./tools/update-plugin-repository.sh \
+  work/pkg/os-theme-opnfluent-1.4.0.pkg /path/to/repository
+```
+
+For a signed repository, feed the package into the repository's existing
+signing and publication pipeline instead, so its current trust configuration
+is preserved. Once the refreshed catalogue is published, the package appears
+in the OPNsense firmware plugin list.
 
 ## Customisation
 
