@@ -30,9 +30,13 @@ foreach ($defaults as $key => $fallback) {
     $defaults[$key] = isset($configured[$key]) && !is_array($configured[$key]) ? (string)$configured[$key] : $fallback;
 }
 
-$target = '/usr/local/opnsense/www/themes/opnfluent/build/branding.json';
+$target = '/usr/local/opnsense/www/themes/opnfluent/build/branding.js';
 $temporary = $target . '.' . bin2hex(random_bytes(8)) . '.tmp';
 $encoded = json_encode($defaults, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+if ($encoded !== false) {
+    $encoded = 'window.OPNfluentBranding=' . $encoded . ';';
+}
 
 if ($encoded === false || file_put_contents($temporary, $encoded, LOCK_EX) === false ||
     !chmod($temporary, 0644) || !rename($temporary, $target)) {

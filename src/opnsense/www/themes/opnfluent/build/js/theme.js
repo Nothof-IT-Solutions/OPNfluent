@@ -117,21 +117,18 @@
     }
 
     function loadSettings() {
-        fetch('/ui/themes/opnfluent/build/branding.json', {
-            credentials: 'same-origin',
-            headers: {'Accept': 'application/json'},
-            cache: 'no-store'
-        }).then(function (response) {
-            if (!response.ok) {
-                throw new Error('settings unavailable');
-            }
-            return response.json();
-        }).then(function (data) {
-            settings = data && data.general ? data.general : data;
+        var brandingScript = document.createElement('script');
+        brandingScript.src = '/ui/themes/opnfluent/build/branding.js?v=' + Date.now();
+        brandingScript.onload = function () {
+            settings = window.OPNfluentBranding || null;
             applyBranding();
-        }).catch(function () {
+            brandingScript.remove();
+        };
+        brandingScript.onerror = function () {
             /* Keep the safe compiled defaults if public branding is unavailable. */
-        });
+            brandingScript.remove();
+        };
+        document.head.appendChild(brandingScript);
     }
 
     if (media) {

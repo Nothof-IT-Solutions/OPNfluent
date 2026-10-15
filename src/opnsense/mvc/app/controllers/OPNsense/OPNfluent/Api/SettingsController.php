@@ -11,7 +11,7 @@ use OPNsense\Base\ApiMutableModelControllerBase;
 
 class SettingsController extends ApiMutableModelControllerBase
 {
-    private const PUBLIC_SETTINGS = '/usr/local/opnsense/www/themes/opnfluent/build/branding.json';
+    private const PUBLIC_SETTINGS = '/usr/local/opnsense/www/themes/opnfluent/build/branding.js';
 
     protected static $internalModelClass = '\OPNsense\OPNfluent\OPNfluent';
     protected static $internalModelName = 'general';
@@ -38,6 +38,7 @@ class SettingsController extends ApiMutableModelControllerBase
         if ($encoded === false) {
             throw new \RuntimeException('Unable to encode public OPNfluent branding settings.');
         }
+        $encoded = 'window.OPNfluentBranding=' . $encoded . ';';
 
         $temporary = self::PUBLIC_SETTINGS . '.' . bin2hex(random_bytes(8)) . '.tmp';
         if (file_put_contents($temporary, $encoded, LOCK_EX) === false ||

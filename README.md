@@ -62,7 +62,7 @@ Branding**. Settings are validated and stored in the standard OPNsense
 configuration tree under `OPNsense/OPNfluent`.
 
 The selected logo, favicon, title, appearance and accent colors also apply to
-the unauthenticated login page. A generated, read-only JSON file exposes only
+the unauthenticated login page. A generated, read-only JavaScript file exposes only
 these cosmetic values; the management API remains protected by authentication.
 The footer can be hidden globally, and optional custom CSS is appended after
 the theme stylesheet.
@@ -103,7 +103,7 @@ OPNsense `plugins` checkout, then run:
 
 The official plugin framework stages all files, generates the package manifest
 and install/deinstall hooks, and produces
-`work/pkg/os-theme-opnfluent-1.5.0.pkg`.
+`work/pkg/os-theme-opnfluent-1.5.1.pkg`.
 
 Installing that file directly with `pkg add` is suitable for testing, but the
 OPNsense firmware page will label it **orphaned** until the same package is
@@ -116,7 +116,7 @@ regenerate its catalogue:
 
 ```sh
 ./tools/update-plugin-repository.sh \
-  work/pkg/os-theme-opnfluent-1.5.0.pkg /path/to/repository
+  work/pkg/os-theme-opnfluent-1.5.1.pkg /path/to/repository
 ```
 
 For a signed repository, feed the package into the repository's existing
