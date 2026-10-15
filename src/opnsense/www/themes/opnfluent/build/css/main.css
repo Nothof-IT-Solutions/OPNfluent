@@ -7335,7 +7335,7 @@ div[data-for*=help_for] {
 
 /* === OPNfluent Mica overlay (generated) === */
 /*
- * OPNfluent 1.6.1
+ * OPNfluent 1.6.2
  * Fluent-inspired Mica surface layer for OPNsense.
  * Built on the current OPNsense theme. Targeted !important rules are used
  * where the administration UI's Bootstrap selectors have higher specificity.
@@ -7928,6 +7928,21 @@ main.page-content > .row {
   overflow: hidden !important;
   -webkit-backdrop-filter: var(--of-blur);
   backdrop-filter: var(--of-blur);
+}
+
+/* dashboard.css is loaded after main.css and otherwise forces light hover
+   surfaces for the legacy flex/grid widgets in dark mode. */
+:root[data-opnfluent-mode] body .flextable-row:hover,
+:root[data-opnfluent-mode] body .grid-row:hover,
+:root[data-opnfluent-mode] body .column .flex-cell:hover {
+  color: var(--of-text) !important;
+  background: var(--of-subtle) !important;
+}
+
+:root[data-opnfluent-mode] body .flextable-row:hover .flex-cell,
+:root[data-opnfluent-mode] body .grid-row:hover .grid-cell,
+:root[data-opnfluent-mode] body .column .flex-cell:hover * {
+  color: var(--of-text) !important;
 }
 
 .widget-header {
