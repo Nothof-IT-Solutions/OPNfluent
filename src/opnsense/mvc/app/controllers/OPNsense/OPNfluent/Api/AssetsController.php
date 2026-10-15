@@ -29,6 +29,16 @@ class AssetsController extends ApiControllerBase
      */
     public function uploadAction($kind = null)
     {
+        try {
+            return $this->storeUpload($kind);
+        } catch (\Throwable $error) {
+            syslog(LOG_ERR, sprintf('OPNfluent branding upload failed: %s', $error->getMessage()));
+            return $this->failure(gettext('The image could not be processed. Check the system log for details.'));
+        }
+    }
+
+    private function storeUpload($kind)
+    {
         if (!$this->request->isPost()) {
             return $this->failure(gettext('Only POST requests are accepted.'));
         }
@@ -39,12 +49,12 @@ class AssetsController extends ApiControllerBase
             return $this->failure(gettext('Unknown branding asset type.'));
         }
 
-        $files = $this->request->getUploadedFiles(true);
+        $files = $this->request->getUploadedFiles(false);
         if (count($files) !== 1) {
             return $this->failure(gettext('Select exactly one image to upload.'));
         }
 
-        $file = reset($files);
+        $file = array_values($files)[0];
         if ($file->getError() !== UPLOAD_ERR_OK) {
             return $this->failure(gettext('The image upload did not complete successfully.'));
         }

@@ -1,7 +1,7 @@
 PLUGIN_NAME=		theme-opnfluent
-PLUGIN_VERSION=		1.4.0
+PLUGIN_VERSION=		1.4.1
 PLUGIN_COMMENT=		Fluent Mica theme with integrated branding settings
-PLUGIN_MAINTAINER=	manuel@nothof.it
+PLUGIN_MAINTAINER=	development@nothof.it
 PLUGIN_WWW=		https://github.com/Nothof-IT-Solutions/OPNfluent
 PLUGIN_LICENSE=		BSD2CLAUSE
 PLUGIN_NO_ABI=		yes

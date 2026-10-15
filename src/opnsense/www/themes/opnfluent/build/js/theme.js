@@ -6,6 +6,33 @@
     var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
     var settings = null;
 
+    function settingValue(name, fallback) {
+        var value = settings && settings[name];
+
+        /* OptionField values can be returned as a scalar or as a selected-value
+           structure depending on the OPNsense framework version. */
+        if (value && typeof value === 'object') {
+            if (Object.prototype.hasOwnProperty.call(value, 'selected')) {
+                value = value.selected;
+            } else if (Object.prototype.hasOwnProperty.call(value, 'value')) {
+                value = value.value;
+            } else {
+                Object.keys(value).some(function (key) {
+                    if (value[key] && Number(value[key].selected) === 1) {
+                        value = key;
+                        return true;
+                    }
+                    return false;
+                });
+            }
+        }
+        if (Array.isArray(value)) {
+            value = value.length ? value[0] : fallback;
+        }
+
+        return value === undefined || value === null ? fallback : String(value).trim();
+    }
+
     function validHex(value, fallback) {
         return /^#[0-9a-f]{6}$/i.test(value || '') ? value : fallback;
     }
@@ -31,14 +58,15 @@
             return;
         }
 
-        var mode = ['auto', 'light', 'dark'].indexOf(settings.colorMode) >= 0 ? settings.colorMode : 'auto';
+        var configuredMode = settingValue('colorMode', 'auto').toLowerCase();
+        var mode = ['auto', 'light', 'dark'].indexOf(configuredMode) >= 0 ? configuredMode : 'auto';
         var dark = mode === 'dark' || (mode === 'auto' && media && media.matches);
-        var accent = validHex(dark ? settings.accentDark : settings.accentLight, dark ? '#60a5fa' : '#0067c0');
-        var background = validHex(dark ? settings.backgroundDark : settings.backgroundLight, dark ? '#111820' : '#e9f0f7');
-        var surface = validHex(dark ? settings.surfaceDark : settings.surfaceLight, dark ? '#1c242e' : '#f8fbff');
-        var opacity = clamp(settings.surfaceOpacity, 60, 100, 84) / 100;
-        var blur = clamp(settings.blurRadius, 0, 40, 22);
-        var radius = clamp(settings.cornerRadius, 0, 24, 10);
+        var accent = validHex(settingValue(dark ? 'accentDark' : 'accentLight', ''), dark ? '#60a5fa' : '#0067c0');
+        var background = validHex(settingValue(dark ? 'backgroundDark' : 'backgroundLight', ''), dark ? '#111820' : '#e9f0f7');
+        var surface = validHex(settingValue(dark ? 'surfaceDark' : 'surfaceLight', ''), dark ? '#1c242e' : '#f8fbff');
+        var opacity = clamp(settingValue('surfaceOpacity', '84'), 60, 100, 84) / 100;
+        var blur = clamp(settingValue('blurRadius', '22'), 0, 40, 22);
+        var radius = clamp(settingValue('cornerRadius', '10'), 0, 24, 10);
         var root = document.documentElement;
 
         root.setAttribute('data-opnfluent-mode', dark ? 'dark' : 'light');
@@ -56,16 +84,17 @@
         root.style.setProperty('--of-radius', radius + 'px');
         root.style.setProperty('--of-radius-sm', Math.max(0, radius - 4) + 'px');
 
-        document.title = settings.titlePrefix ? settings.titlePrefix + ' | ' + originalTitle : originalTitle;
+        var titlePrefix = settingValue('titlePrefix', '');
+        document.title = titlePrefix ? titlePrefix + ' | ' + originalTitle : originalTitle;
 
-        var logo = localPath(settings.logoPath);
+        var logo = localPath(settingValue('logoPath', ''));
         if (logo) {
             document.querySelectorAll('.navbar-brand img, .brand img, img.logo, img[src*="default-logo"]').forEach(function (image) {
                 image.src = logo;
             });
         }
 
-        var favicon = localPath(settings.faviconPath);
+        var favicon = localPath(settingValue('faviconPath', ''));
         if (favicon) {
             document.querySelectorAll('link[rel~="icon"]').forEach(function (link) {
                 link.href = favicon;
