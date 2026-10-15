@@ -7335,7 +7335,7 @@ div[data-for*=help_for] {
 
 /* === OPNfluent Mica overlay (generated) === */
 /*
- * OPNfluent 1.5.5
+ * OPNfluent 1.6.0
  * Fluent-inspired Mica surface layer for OPNsense.
  * Built on the current OPNsense theme. Targeted !important rules are used
  * where the administration UI's Bootstrap selectors have higher specificity.
@@ -7712,6 +7712,7 @@ header.navbar {
 
 #navigation #mainmenu a.list-group-item {
   color: var(--of-text) !important;
+  background: transparent !important;
   border-color: transparent !important;
   border-radius: var(--of-radius-sm) !important;
   transition: background-color 120ms ease, color 120ms ease !important;
@@ -7735,13 +7736,14 @@ header.navbar {
 .active-menu-title,
 .active-menu a {
   position: relative;
-  background-color: #f7f7f7;
+  color: var(--of-text) !important;
+  background-color: var(--of-accent-soft) !important;
   text-decoration: none;
 }
 
 #navigation #mainmenu .active-menu-title,
 #navigation #mainmenu .active-menu a {
-  background-color: #f7f7f7 !important;
+  background-color: var(--of-accent-soft) !important;
 }
 
 .active-menu-title::before,
@@ -7751,11 +7753,12 @@ header.navbar {
 
 .active-menu-title.active,
 .active-menu a.active {
-  background-color: #e8e8e8;
+  color: var(--of-accent) !important;
+  background-color: var(--of-accent-soft) !important;
 }
 
 .active-menu a::before {
-  background: rgb(241.320754717, 152.4056603774, 123.679245283);
+  background: var(--of-accent);
 }
 
 #navigation #mainmenu > div > a.list-group-item > span.fa,
@@ -7971,6 +7974,33 @@ main.page-content > .row {
 .well,
 .modal-body { color: var(--of-text) !important; }
 
+.list-group-item,
+a.list-group-item,
+a.list-group-item .list-group-item-heading {
+  color: var(--of-text) !important;
+  background: transparent !important;
+  border-color: var(--of-border) !important;
+}
+
+a.list-group-item:hover,
+a.list-group-item:focus,
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  color: var(--of-accent) !important;
+  background: var(--of-accent-soft) !important;
+}
+
+.list-group-item.disabled,
+.list-group-item.disabled:hover,
+.list-group-item.disabled:focus,
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  color: var(--of-muted) !important;
+  background: rgba(127, 127, 127, 0.10) !important;
+}
+
 .dropdown-menu,
 .popover,
 .tooltip-inner,
@@ -8062,6 +8092,19 @@ textarea {
   box-shadow: inset 0 -1px 0 var(--of-border-strong) !important;
 }
 
+select option,
+select optgroup {
+  color: var(--of-text);
+  background: var(--of-mica-solid);
+}
+
+legend,
+label,
+.control-label {
+  color: var(--of-text) !important;
+  border-color: var(--of-border) !important;
+}
+
 .form-control:focus,
 input:focus,
 select:focus,
@@ -8130,6 +8173,17 @@ table,
   color: var(--of-accent) !important;
   background: var(--of-accent-soft) !important;
   border-color: var(--of-accent-border) !important;
+}
+
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > span,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span:hover {
+  color: var(--of-muted) !important;
+  background: var(--of-layer) !important;
+  border-color: var(--of-border) !important;
 }
 
 .label,
