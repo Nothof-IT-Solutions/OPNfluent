@@ -8225,3 +8225,7 @@ code {
 #menu_search_box {
   transition: 0.5s ease-in;
 }
+
+#mainmenu {
+  padding-right: 10px;
+}
