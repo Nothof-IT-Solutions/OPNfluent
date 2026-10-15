@@ -1,5 +1,5 @@
 /*
- * OPNfluent 1.5.2
+ * OPNfluent 1.5.3
  * Fluent-inspired Mica surface layer for OPNsense.
  * Built on the current OPNsense theme. Targeted !important rules are used
  * where the administration UI's Bootstrap selectors have higher specificity.
@@ -169,6 +169,7 @@ body,
 .login-modal-container {
   width: min(430px, 100%) !important;
   max-width: 430px !important;
+  transform: translateY(-48px);
   margin: auto auto 0 !important;
   overflow: hidden;
   color: var(--of-text) !important;
@@ -863,6 +864,7 @@ code {
   .well,
   .widgetdiv { box-shadow: 0 4px 18px rgba(20, 35, 55, 0.10) !important; }
   .page-login > .container { padding: 20px 14px !important; }
+  .login-modal-container { transform: translateY(-20px); }
   .login-modal-head { padding: 22px 22px 8px !important; }
   .login-modal-content { padding: 8px 22px 24px !important; }
 }

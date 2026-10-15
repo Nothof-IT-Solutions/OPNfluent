@@ -85,7 +85,8 @@
         root.style.setProperty('--of-radius-sm', Math.max(0, radius - 4) + 'px');
 
         var titlePrefix = settingValue('titlePrefix', '');
-        document.title = titlePrefix ? titlePrefix + ' | ' + originalTitle : originalTitle;
+        var pageTitle = originalTitle.replace(/\s*\|\s*OPNsense\s*$/i, '');
+        document.title = titlePrefix ? titlePrefix + ' | ' + pageTitle : pageTitle;
 
         var logo = localPath(settingValue('logoPath', ''));
         if (logo) {
