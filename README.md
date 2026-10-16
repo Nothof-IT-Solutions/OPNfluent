@@ -108,3 +108,45 @@ OPNfluent-specific CSS and documentation use the BSD 2-Clause licence in the
 repository root. Inherited Bootstrap, font and theme assets retain their own
 licence notices inside the theme tree (including `LICENSE` and
 `build/fonts/LICENSE.SourceSansPro.txt`).
+
+## Disclaimer and Limitation of Liability
+
+**OPNfluent is an independent, experimental, community-developed project and is not affiliated with, endorsed by, or officially supported by the OPNsense project or Deciso B.V.**
+
+This software is provided free of charge, on an **"AS IS" and "AS AVAILABLE"** basis, without any warranties or guarantees of any kind, to the extent permitted by applicable law.
+
+### Functionality and Compatibility
+
+No guarantee is made regarding the functionality, stability, reliability, availability, compatibility, or continued maintenance of this software.
+
+The plugin may contain defects, cause unexpected behavior, interfere with the OPNsense administration interface, or become incompatible with future OPNsense releases.
+
+### Security
+
+No representation or warranty is made that the software is free from vulnerabilities, security defects, maliciously exploitable behavior, or other risks.
+
+Parts of this project have been developed with the assistance of AI-based coding tools. AI-generated contributions may contain errors, vulnerabilities, or other defects.
+
+**The software has not been independently security-audited.**
+
+### Use at Your Own Risk
+
+Installation and use of OPNfluent are entirely at the user's own risk.
+
+Users are strongly encouraged to test the plugin in a non-production environment and create appropriate configuration backups before installation or updates.
+
+The software is not recommended for security-critical or production environments without appropriate independent validation and testing.
+
+### Limitation of Liability
+
+To the maximum extent permitted by applicable law, the project maintainer and contributors disclaim liability for damages arising from the installation, use, malfunction, incompatibility, or unavailability of this software, including but not limited to:
+
+- Loss of data or configuration
+- System instability or service interruptions
+- Security breaches or unauthorized access
+- Network outages or operational disruptions
+- Financial losses or other consequential damages
+
+Nothing in this disclaimer excludes or limits liability where such exclusion or limitation is prohibited by applicable law.
+
+The software remains subject to the terms and conditions of the BSD 2-Clause License included in this repository.
